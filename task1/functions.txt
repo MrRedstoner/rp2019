@@ -1,0 +1,28 @@
+typ:		element			subor:riadok
+-------------------------------------------------------
+syntax:		komentar		Cvicenie2/bisekcia.m:1
+syntax:		premenna		Cvicenie2/bisekcia.m:3
+syntax:		lambda			Cvicenie2/bisekcia.m:3
+funkcia:	fplot			Cvicenie2/bisekcia.m:15
+funkcia:	title			Cvicenie2/bisekcia.m:16
+funkcia:	func2str		Cvicenie2/bisekcia.m:16
+prikaz:		hold on/off		Cvicenie2/bisekcia.m:17
+funkcia:	plot			Cvicenie2/bisekcia.m:18
+syntax:		for cyklus		Cvicenie2/bisekcia.m:23
+syntax:		podmienka		Cvicenie2/bisekcia.m:25
+syntax:		break			Cvicenie2/bisekcia.m:33
+funkcia:	pause			Cvicenie2/bisekcia.m:35
+funkcia:	fprintf			Cvicenie2/bisekcia.m:39
+funkcia:	sqrt			Cvicenie2/zlrez.m:19
+funkcia:	abs			Cvicenie3/kvadint.m:49
+funkcia:	legend			Cvicenie3/newton.m:40
+funkcia:	meshgrid		Cvicenie4/cauchy.m:10
+funkcia:	linspace		Cvicenie4/cauchy.m:10
+syntax:		tuple priradenie	Cvicenie4/cauchy.m:10
+funkcia:	zeros			Cvicenie4/cauchy.m:11
+funkcia:	size			Cvicenie4/cauchy.m:11
+funkcia:	figure			Cvicenie4/cauchy.m:19
+funkcia:	surfc			Cvicenie4/cauchy.m:20
+funkcia:	contour			Cvicenie4/cauchy.m:23
+syntax:		while cyklus		Cvicenie4/zrez.m:16
+syntax:		funkcia			Cvicenie6/zrez.m:1
