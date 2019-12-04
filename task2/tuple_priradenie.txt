@@ -1,0 +1,4 @@
+Matlab
+[a,b] = zdroj_hodnot;
+Python:
+(a, b) = zdroj_hodnot

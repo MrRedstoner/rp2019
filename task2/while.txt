@@ -1,0 +1,7 @@
+Matlab:
+while podmienka
+	prikazy
+end
+Python:
+while podmienka:
+	prikazy

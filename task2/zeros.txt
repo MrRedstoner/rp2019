@@ -1,0 +1,6 @@
+Matlab:
+zeros(pocet);
+Python:
+def zeros(n):
+    return [0]*n
+zeros(pocet)

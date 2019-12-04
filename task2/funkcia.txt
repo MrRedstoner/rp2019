@@ -1,0 +1,8 @@
+Matlab:
+function vystup = nazov(vstupy)
+	prikazy
+end
+Python:
+def nazov(vstupy):
+	prikazy
+	return vystup

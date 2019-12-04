@@ -1,0 +1,12 @@
+fplot
+title
+func2str
+hold on/off
+plot
+fprintf
+legend
+meshgrid
+linspace
+figure
+surfc
+contour

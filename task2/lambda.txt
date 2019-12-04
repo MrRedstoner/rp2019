@@ -1,0 +1,4 @@
+Matlab:
+@(argument) vypocet;
+Python:
+lambda argument: vypocet

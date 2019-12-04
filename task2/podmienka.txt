@@ -1,0 +1,11 @@
+Matlab:
+if podmienka
+	prikazy0
+[else
+	prikazy1]
+end
+Python:
+if podmienka:
+	prikazy0
+[else
+	prikazy1]

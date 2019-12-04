@@ -1,0 +1,5 @@
+Matlab:
+sqrt(hodnota);
+Python:
+from math import sqrt
+sqrt(hodnota)

@@ -1,0 +1,7 @@
+Matlab:
+for premmenna = 1:limit
+	prikazy
+end
+Python:
+for premenna in range(1,limit+1):
+	prikazy

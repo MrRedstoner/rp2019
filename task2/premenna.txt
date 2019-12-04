@@ -1,0 +1,4 @@
+Matlab:
+nazov = hodnota;
+Python
+nazov = hodnota

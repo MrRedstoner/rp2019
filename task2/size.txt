@@ -1,0 +1,4 @@
+Matlab:
+size(pole,1)
+Python:
+len(pole)
