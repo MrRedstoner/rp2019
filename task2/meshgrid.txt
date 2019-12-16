@@ -1,0 +1,9 @@
+Matlab:
+meshgrid(a,b);
+Python:
+def meshgrid(a,b):
+    lb=list(a)
+    la=list(b)
+    return {x:{y:y for y in lb} for x in la}
+meshgrid(a,b)
+#odlisny pristup k pouzivaniu

@@ -1,0 +1,7 @@
+Matlab:
+linspace(from,to,count);
+Python:
+def linspace(a,b,c):
+    part=(b-a)/c
+    return list((a + (i*part)) for i in range(c+1))
+linspace(from,to,count)

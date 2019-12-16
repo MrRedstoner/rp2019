@@ -1,0 +1,7 @@
+Matlab:
+func2str(funkcia)
+Python:
+import inspect
+def func2str(f):
+    return inspect.getsource(f)
+func2str(funkcia)

@@ -1,0 +1,6 @@
+Matlab:
+fprintf("format",argumenty);
+Python:
+def printf(str,*args):
+    print(str % args)
+prinf("format",argumenty)
