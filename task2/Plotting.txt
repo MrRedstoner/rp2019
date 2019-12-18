@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt;
+
+Python:
+plt.show() #zobrazi plot
+
+Matlab:
+title("nazov");
+Python:
+plt.title("nazov")
+
+Matlab:
+hold on/off
+Python:
+plt.clf() #zahodi stary obsah
+
+Matlab:
+plot(x,y);
+Python:
+plt.plot(x,y)
+
+Matlab:
+legend("nazov1","nazov2")
+Python:
+plt.legend(["nazov1","nazov2"])
+
+Matlab:
+surfc(X,Y,Z);
+Python:
+from mpl_toolkits.mplot3d import Axes3D
+def surfc(a,b,c):
+	plt.figure().gca(projection="3d").plot_surface(a,b,c)
+surfc(X,Y,Z)
+plt.show()
+
+Matlab:
+contour(X,Y,Z);
+Python:
+plt.contour(X,Y,Z)
+
+Matlab:
+figure("nazov");
+Python:
+plt.figure("nazov")

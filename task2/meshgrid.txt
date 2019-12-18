@@ -1,9 +1,5 @@
 Matlab:
-meshgrid(a,b);
+[X,Y] = meshgrid(a,b);
 Python:
-def meshgrid(a,b):
-    lb=list(a)
-    la=list(b)
-    return {x:{y:y for y in lb} for x in la}
-meshgrid(a,b)
-#odlisny pristup k pouzivaniu
+import numpy as np
+X,Y = np.meshgrid(a,b)
