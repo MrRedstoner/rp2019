@@ -41,3 +41,13 @@ Matlab:
 figure("nazov");
 Python:
 plt.figure("nazov")
+
+Matlab:
+fplot(funkcia,rozsah);
+Python:
+import numpy as np
+def fplot(f,r):
+	X=np.linspace(*r,100)
+	plt.plot(X,np.vectorize(f)(X))
+	plt.show()
+fplot(funkcia,rozsah)
