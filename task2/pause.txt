@@ -2,4 +2,4 @@ Matlab:
 pause(cas);
 Python:
 from time import sleep
-sleep(cas*1000)
+sleep(cas)
