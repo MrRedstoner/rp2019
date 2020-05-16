@@ -56,7 +56,7 @@ end
 hold off
 % pocet potrebnych iteracii a najdeny interval
 fprintf('========================== \n');
-fprintf('   Metóda zlatého rezu \n');
+fprintf('   MetÃ³da zlatÃ©ho rezu \n');
 fprintf('-------------------------- \n');
 fprintf('# Iter |     Interval \n');
 fprintf('-------------------------- \n');

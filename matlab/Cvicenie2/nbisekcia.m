@@ -37,7 +37,7 @@ end
 hold off
 % pocet potrebnych iteracii a najdeny interval
 fprintf('========================== \n');
-fprintf(' MetÛda n·hodnej bisekcie \n');
+fprintf(' Met√≥da n√°hodnej bisekcie \n');
 fprintf('-------------------------- \n');
 fprintf('# Iter |     Interval \n');
 fprintf('-------------------------- \n');

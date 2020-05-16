@@ -37,7 +37,7 @@ end
 hold off
 % pocet potrebnych iteracii a najdeny interval
 fprintf('========================== \n');
-fprintf('     Metóda bisekcie \n');
+fprintf('     MetÃ³da bisekcie \n');
 fprintf('-------------------------- \n');
 fprintf('# Iter |     Interval \n');
 fprintf('-------------------------- \n');

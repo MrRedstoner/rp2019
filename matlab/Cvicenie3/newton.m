@@ -37,8 +37,8 @@ for k = 1:kMax
     fplot(Taylor,[a b])
     % zakreslenie bodu x_k
     plot(x,f(x),'ok')
-    legend('úèelová funkcia f(x)','kvadratická aproximácia \phi(x)',...
-        'interpolaènı bod')
+    legend('ÃºÄelovÃ¡ funkcia f(x)','kvadratickÃ¡ aproximÃ¡cia \phi(x)',...
+        'interpolaÄnÃ½ bod')
     hold off
     %%%%%%%%%%
     % nova aproximacia
