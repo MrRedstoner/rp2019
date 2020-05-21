@@ -1,5 +1,16 @@
 # Postup rucneho prekladu Matlab -> Python
 
+## Predpoklady
+
+### Nutne
+
+- nainstalovany Python3, testovana bola verzia 3.6
+- nainstalovane python baliky `numpy` a `matplotlib` (oba dostupne cez `pip`)
+
+### Odporucane
+
+- nainstalovany Pycharm (staci community edition), idealne s matlab pluginom
+
 ## Zakladne pojmy
 
 ### Blok kodu v Matlabe
