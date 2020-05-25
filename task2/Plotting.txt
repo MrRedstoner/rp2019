@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt;
+import matplotlib.pyplot as plt
 
 Python:
 plt.show() #zobrazi plot

@@ -7,5 +7,5 @@ end
 Python:
 if podmienka:
 	prikazy0
-[else
+[else:
 	prikazy1]
