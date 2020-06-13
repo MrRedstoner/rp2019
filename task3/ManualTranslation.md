@@ -117,8 +117,7 @@ prislusne upravujuc koniec bloku, teda
     
     - komentare zacinaju `%`, to zmenime na pythonovske `#` pricom podla konvencie ma byt nasledovane medzerou
     
-    - aritmeticke vyrazy zostavaju prevazne rovnake, desatinne cisla s celociselnou castou 0 sa musia pisat aj s touto
-    nulou, t.j. namiesto `.5` treba `0.5`, len mocniny sa namiesto `.^` pisu `**`,
+    - aritmeticke vyrazy zostavaju prevazne rovnake, len mocniny sa namiesto `.^` pisu `**`,
     tiez nemusi byt nevhodne vyraz uzatvorkovat
     
     - prikazy tak ako je uvedene v prislusnych suboroch task2, pricom pre func2str/printf/surfc/fplot skopirujeme
