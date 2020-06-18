@@ -138,6 +138,8 @@ prislusne upravujuc koniec bloku, teda
     size(pole,1)
     
     zeros(pocet)
+    
+    rand()
     ```
     na
     ```python
@@ -154,8 +156,11 @@ prislusne upravujuc koniec bloku, teda
     len(pole)
     
     np.ma.zeros(pocet)
+    
+    random.random()
     ```
     kde sleep vyzaduje `from time import sleep`, pouzitie sqrt vyzaduje `from math import sqrt`
+    a random potrebuje `import random`
     
     Narozdiel od Matlabu na konci riadkov netreba `;` a odporuca sa ich odstranit
     
