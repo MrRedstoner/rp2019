@@ -8,7 +8,7 @@ def func2str(f):
 
 
 def printf(format_str, *args):
-    print(format_str % args)
+    print(format_str % args, end='')
 
 
 def surfc(a, b, c):
