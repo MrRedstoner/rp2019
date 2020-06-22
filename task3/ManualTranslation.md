@@ -73,6 +73,8 @@ Po vynechanom riadku dame `import numpy as np`, kedze je takmer garantovane ze t
 
 Preklad robime postupne po blokoch, a to tak, ze:
 
+2. Ak je na konci riadka `...` dalsi riadok sa povazuje za pokracovanie tohto, nahradime teda `...` medzerou
+
 2. podla typu zaciatku if/else/while/for/function prepiseme zaciatok ako je uvedene v prislusnych suboroch task2,
 prislusne upravujuc koniec bloku, teda
 
@@ -117,12 +119,14 @@ prislusne upravujuc koniec bloku, teda
     
     - komentare zacinaju `%`, to zmenime na pythonovske `#` pricom podla konvencie ma byt nasledovane medzerou
     
-    - aritmeticke vyrazy zostavaju prevazne rovnake, len mocniny sa namiesto `.^` pisu `**`,
+    - aritmeticke vyrazy zostavaju prevazne rovnake, len mocniny sa namiesto `^` pisu `**`,
+    , operator `'` sa nahradi `.conj().T`,
+    namiesto operatorov zacinajucich `.` ako napriklad `.*` sa pouziju obycajne `*`,
     tiez nemusi byt nevhodne vyraz uzatvorkovat
     
-    - prikazy tak ako je uvedene v prislusnych suboroch task2, pricom pre func2str/printf/surfc/fplot skopirujeme
+    - prikazy tak ako je uvedene v prislusnych suboroch task2, pricom pre func2str/printf/surfc/fplot/size skopirujeme
     definiciu z matlabeqiv.py za importy v nasom subore, a bud nechame Pycharm nech ponukne potrebne importy,
-    alebo ich tiez skopirujeme, navyse pouzitie surfc vyzaduje `from mpl_toolkits.mplot3d import Axes3D` potom teda:
+    alebo ich tiez skopirujeme, navyse pouzitie surfc vyzaduje `from mpl_toolkits.mplot3d import Axes3D`, potom teda:
     
     ```matlab
     fprintf("format",argumenty)
@@ -134,8 +138,6 @@ prislusne upravujuc koniec bloku, teda
     [X,Y] = meshgrid(a,b)
     
     pause(cas)
-    
-    size(pole,1)
     
     zeros(pocet)
     
@@ -152,8 +154,6 @@ prislusne upravujuc koniec bloku, teda
     X,Y = np.meshgrid(a,b)
     
     sleep(cas)
-    
-    len(pole)
     
     np.ma.zeros(pocet)
     

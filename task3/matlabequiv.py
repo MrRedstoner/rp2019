@@ -17,5 +17,12 @@ def surfc(a, b, c):
 
 def fplot(f, r):
     linspace = np.linspace(*r, 100)
-    plt.plot(linspace, np.vectorize(f)(linspace))
+    plt.plot(linspace, f(linspace))
     plt.show()
+
+
+def size(np_array, dimen=None):
+    if dimen is None:
+        return np_array.shape
+    else:
+        return np_array.shape[dimen - 1]
