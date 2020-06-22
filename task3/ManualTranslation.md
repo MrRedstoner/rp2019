@@ -6,7 +6,7 @@
 
 - nainštalovaný Python3, testovaná bola verzia 3.6
 - nainštalované Python balíky `numpy` a `matplotlib`
-(oba dostupné cez `pip`, numpy často tiež cez systémový package manager)
+(oba dostupné cez `pip`, numpy je často tiež  dostupný cez systémový package manager)
 
 ### Odporúčané
 
@@ -20,7 +20,7 @@ Začína kľúčovými slovami ako if, while, function.
 
 Končí kľúčovým slovom end.
 
-Môžu byť do seba vnorené, každý začiatok spôsobuje vnorenie, koniec vynorenie, blok končí, keď sa na úrovni vnorenia
+Bloky môžu byť do seba vnorené, každý začiatok spôsobuje vnorenie, koniec vynorenie, blok končí, keď sa na úrovni vnorenia
 spôsobenej jeho začiatkom objaví koniec.
 
 Napr:
@@ -42,8 +42,8 @@ Začína kľúčovými slovami ako if, while, def.
 
 Končí, keď sa vyskytne kód rovnako alebo menej odsadený ako začiatok príslušného bloku.
 
-Môžu byť vnorené, úroveň vnorenia je vyjadrená dĺžkou odsadenia, ktorá musí byť striktne väčšia ako vonkajší blok,
-a konzistentná vrámci bloku, okrem doň vnorených blokov.
+Bloky môžu byť vnorené, úroveň vnorenia je vyjadrená dĺžkou odsadenia, ktorá musí byť striktne väčšia ako vonkajší blok,
+a konzistentná v rámci bloku, okrem doň vnorených blokov.
 
 Štandardne sa používa odsadenie 4 medzery od rodičovského bloku.
 
@@ -60,7 +60,9 @@ if a > b:
 
 ### Vytvorenie Pythonového súboru
 
-Pre `nazov.m` vytvoríme `nazov.py`. V Pycharme sa toto robi cez:
+Najprv potrebujeme vytvoriť súbor, do ktorého budeme preklad písať.
+
+Pre súbor `nazov.m` vytvoríme `nazov.py`. V Pycharme sa toto robi cez:
 
 1. Pravý klik na priečinok
 1. `new`
@@ -70,13 +72,15 @@ Pre `nazov.m` vytvoríme `nazov.py`. V Pycharme sa toto robi cez:
 
 Môže byť vhodné na prvý riadok súboru dať text `#!/bin/env python3` aby ho systém bol schopný priamo spustiť.
 
-Po vynechanom riadku dáme `import numpy as np`, keďže je takmer garantované, že to bude nutné.
+Po vynechanom riadku dáme `import numpy as np`, čo je knižnica potrebná pre veľa matematickej práce v Pythone.
+
+Následne môžeme vložiť obsah pôvodného súboru, ktorý budeme postupne prerábať.
 
 ### Preklad samotný
 
 Preklad robíme postupne po blokoch, a to tak, že:
 
-2. Ak je na konci riadka `...`, ďalší riadok sa považuje za pokračovanie tohto, nahradíme teda `...` medzerou.
+2. Ak sú na konci riadka tri bodky, ďalší riadok sa považuje za pokračovanie tohto, nahradíme ich teda medzerou.
 
 2. Podľa typu začiatku if/else/while/for/function prepíšeme začiatok ako je uvedené v prislušných súboroch task2,
 prislušne upravujúc koniec bloku, teda:
@@ -118,17 +122,19 @@ prislušne upravujúc koniec bloku, teda:
 	     return vystup
     ```
 2. Preložíme obsah bloku, teda
-    - vnorene bloky rekurzívne
+    - vnorené bloky preložíme rekurzívne
     
-    - komentáre začínajú `%`, to zmeníme na Pythonovské `#`, pričom podľa konvencie má byť nasledované medzerou
+    - komentáre začínajú `%`, to zmeníme na Pythonovské `#`, ktoré má byť nasledované medzerou
     
     - aritmetické výrazy zostavájú prevažne rovnaké, len mocniny sa namiesto `^` píšu `**`,
     operátor `'` sa nahradí `.conj().T` a namiesto operátorov začínajúcich `.`, ako napríklad `.*`,
-    sa použijú obyčajné `*`, tiež nemusí byť nevhodné výraz uzátvorkovať
+    sa použijú obyčajné `*`, tiež môže byť vhodné výraz uzátvorkovať
     
     - príkazy tak, ako je uvedené v príslušných súboroch task2, pričom pre func2str/printf/surfc/fplot/size skopírujeme
     definíciu z matlabeqiv.py za importy v našom súbore, a buď necháme Pycharm, nech ponúkne potrebné importy,
-    alebo ich tiež skopírujeme, navyše použitie surfc vyžaduje `from mpl_toolkits.mplot3d import Axes3D`, teda:
+    alebo ich tiež skopírujeme
+    
+    - navyše použitie surfc vyžaduje `from mpl_toolkits.mplot3d import Axes3D`
     
     ```matlab
     fprintf("format",argumenty)
@@ -205,6 +211,7 @@ prislušne upravujúc koniec bloku, teda:
 
 2. spustíme výsledný program, a nájdeme miesta, kde sa graf má zobraziť,
 resp. z grafu má odstrániť predchádzajúci obsah porovnaním s pôvodnou Matlab verziou,
-potom zobrazenie sa robí ako `plt.show()` a premazanie `plt.clf()`
+potom zobrazenie sa robí príkazom `plt.show()` a premazanie `plt.clf()`
 
-2. Môžeme nechať Pycharm preformátovať súbor, aby zodpovedal štylistickým štandardom pre Python
+2. Môžeme nechať Pycharm preformátovať súbor, aby zodpovedal štylistickým štandardom pre Python,
+na toto sa používa klávesová skratka `Ctrl + Alt + L`
