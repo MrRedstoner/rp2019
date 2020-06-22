@@ -1,48 +1,51 @@
-# Postup rucneho prekladu Matlab -> Python
+# Postup ručného prekladu Matlab -> Python
 
 ## Predpoklady
 
-### Nutne
+### Nutné
 
-- nainstalovany Python3, testovana bola verzia 3.6
-- nainstalovane python baliky `numpy` a `matplotlib` (oba dostupne cez `pip`)
+- nainštalovaný Python3, testovaná bola verzia 3.6
+- nainštalované Python balíky `numpy` a `matplotlib`
+(oba dostupné cez `pip`, numpy často tiež cez systémový package manager)
 
-### Odporucane
+### Odporúčané
 
-- nainstalovany Pycharm (staci community edition), idealne s matlab pluginom
+- nainštalovaný Pycharm (stačí Community edition), ideálne s Matlab pluginom
 
-## Zakladne pojmy
+## Základné pojmy
 
-### Blok kodu v Matlabe
+### Blok kódu v Matlabe
 
-Zacina klucovymi slovami ako if, while, function.
+Začína kľúčovými slovami ako if, while, function.
 
-Konci klucovym slovom end.
+Končí kľúčovým slovom end.
 
-Mozu byt do seba vnorene, kazdy zaciatok sposobuje vnorenie, koniec vynorenie, blok konci ked sa na urovni vnorenia sposobenu jeho zaciatkom objavi koniec.
+Môžu byť do seba vnorené, každý začiatok spôsobuje vnorenie, koniec vynorenie, blok končí, keď sa na úrovni vnorenia
+spôsobenej jeho začiatkom objaví koniec.
 
 Napr:
 
 ```matlab
 if a>b
-    %nejaky kod
+    % nejaky kod
     if b>c
-        %vnoreny blok
+        % vnoreny blok
     end
-    %dalsi kod
+    % dalsi kod
 end
-%kod za blokom
+% kod za blokom
 ```
 
-### Blok kodu v Pythone
+### Blok kódu v Pythone
 
-Zacina klucovymi slovami ako if, while, def.
+Začína kľúčovými slovami ako if, while, def.
 
-Konci ked sa vyskytne kod rovnako alebo menej odsadeny ako zaciatok prislusneho bloku.
+Končí, keď sa vyskytne kód rovnako alebo menej odsadený ako začiatok príslušného bloku.
 
-Mozu byt vnorene, uroven vnorenia je vyjadrena dlzkou odsadenia ktora musi byt striktne vecsia ako vonkajsi blok a konzistentna vramci bloku okrem don vnorenych blokov.
+Môžu byť vnorené, úroveň vnorenia je vyjadrená dĺžkou odsadenia, ktorá musí byť striktne väčšia ako vonkajší blok,
+a konzistentná vrámci bloku, okrem doň vnorených blokov.
 
-Standardne sa pouziva odsadenie 4 medzery od rodicovskeho bloku.
+Štandardne sa používa odsadenie 4 medzery od rodičovského bloku.
 
 ```python
 if a > b:
@@ -55,28 +58,28 @@ if a > b:
 
 ## Preklad
 
-### Vytvorenie pythonoveho suboru
+### Vytvorenie Pythonového súboru
 
-Pre `nazov.m` vytvorime `nazov.py`. V Pycharme sa toto robi cez:
+Pre `nazov.m` vytvoríme `nazov.py`. V Pycharme sa toto robi cez:
 
-1. pravy klik na priecinok
+1. Pravý klik na priečinok
 1. `new`
 1. `Python file`
-1. vyplnit meno, ponechat zvolene `Python file`
+1. Vyplniť meno, ponechať zvolené `Python file`
 1. Enter
 
-Moze byt vhodne na prvy riadok suboru dat text `#!/bin/env python3` aby ho system bol schopny priamo spustit
+Môže byť vhodné na prvý riadok súboru dať text `#!/bin/env python3` aby ho systém bol schopný priamo spustiť.
 
-Po vynechanom riadku dame `import numpy as np`, kedze je takmer garantovane ze to bude nutne
+Po vynechanom riadku dáme `import numpy as np`, keďže je takmer garantované, že to bude nutné.
 
-### Preklad samotny
+### Preklad samotný
 
-Preklad robime postupne po blokoch, a to tak, ze:
+Preklad robíme postupne po blokoch, a to tak, že:
 
-2. Ak je na konci riadka `...` dalsi riadok sa povazuje za pokracovanie tohto, nahradime teda `...` medzerou
+2. Ak je na konci riadka `...`, ďalší riadok sa považuje za pokračovanie tohto, nahradíme teda `...` medzerou.
 
-2. podla typu zaciatku if/else/while/for/function prepiseme zaciatok ako je uvedene v prislusnych suboroch task2,
-prislusne upravujuc koniec bloku, teda
+2. Podľa typu začiatku if/else/while/for/function prepíšeme začiatok ako je uvedené v prislušných súboroch task2,
+prislušne upravujúc koniec bloku, teda:
 
     ```matlab
     if podmienka
@@ -114,19 +117,18 @@ prislusne upravujuc koniec bloku, teda
 	     # obsah5
 	     return vystup
     ```
-2. prelozime obsah bloku, teda
-    - vnorene bloky rekurzivne
+2. Preložíme obsah bloku, teda
+    - vnorene bloky rekurzívne
     
-    - komentare zacinaju `%`, to zmenime na pythonovske `#` pricom podla konvencie ma byt nasledovane medzerou
+    - komentáre začínajú `%`, to zmeníme na Pythonovské `#`, pričom podľa konvencie má byť nasledované medzerou
     
-    - aritmeticke vyrazy zostavaju prevazne rovnake, len mocniny sa namiesto `^` pisu `**`,
-    , operator `'` sa nahradi `.conj().T`,
-    namiesto operatorov zacinajucich `.` ako napriklad `.*` sa pouziju obycajne `*`,
-    tiez nemusi byt nevhodne vyraz uzatvorkovat
+    - aritmetické výrazy zostavájú prevažne rovnaké, len mocniny sa namiesto `^` píšu `**`,
+    operátor `'` sa nahradí `.conj().T` a namiesto operátorov začínajúcich `.`, ako napríklad `.*`,
+    sa použijú obyčajné `*`, tiež nemusí byť nevhodné výraz uzátvorkovať
     
-    - prikazy tak ako je uvedene v prislusnych suboroch task2, pricom pre func2str/printf/surfc/fplot/size skopirujeme
-    definiciu z matlabeqiv.py za importy v nasom subore, a bud nechame Pycharm nech ponukne potrebne importy,
-    alebo ich tiez skopirujeme, navyse pouzitie surfc vyzaduje `from mpl_toolkits.mplot3d import Axes3D`, potom teda:
+    - príkazy tak, ako je uvedené v príslušných súboroch task2, pričom pre func2str/printf/surfc/fplot/size skopírujeme
+    definíciu z matlabeqiv.py za importy v našom súbore, a buď necháme Pycharm, nech ponúkne potrebné importy,
+    alebo ich tiež skopírujeme, navyše použitie surfc vyžaduje `from mpl_toolkits.mplot3d import Axes3D`, teda:
     
     ```matlab
     fprintf("format",argumenty)
@@ -159,12 +161,12 @@ prislusne upravujuc koniec bloku, teda
     
     random.random()
     ```
-    kde sleep vyzaduje `from time import sleep`, pouzitie sqrt vyzaduje `from math import sqrt`
+    kde sleep vyžaduje `from time import sleep`, použitie sqrt vyžaduje `from math import sqrt`
     a random potrebuje `import random`
     
-    Narozdiel od Matlabu na konci riadkov netreba `;` a odporuca sa ich odstranit
+    Narozdiel od Matlabu na konci riadkov netreba `;` a odporúča sa ich odstrániť.
     
-    - prelozime definicie lambda funcii, nezabudajuc na prelozenie vypoctu
+    - preložíme definície lambda funcií, nezabúdajúc na preloženie výpočtu
     
     ```matlab
     @(argument) vypocet
@@ -174,8 +176,8 @@ prislusne upravujuc koniec bloku, teda
     lambda argument: vypocet
     ```
     
-    - prelozime ostatne grafove funkcie ako je popisane v task2/Plotting,
-    je vyzadovane `import matplotlib.pyplot as plt`, teda
+    - preložíme ostatné grafové funkcie ako je popísane v task2/Plotting,
+    je vyžadované `import matplotlib.pyplot as plt`, teda:
     
     ```matlab
     title(nazov)
@@ -200,5 +202,9 @@ prislusne upravujuc koniec bloku, teda
     
     plt.figure(nazov)
     ```
-2. spustit vysledny program, a najst miesta kde sa graf ma zobrazit, resp z grafu ma odstranit predchadzajuci obsah,
-porovnanim s povodnou matlab verziou, potom zobrazenie sa robi ako `plt.show()` a premazanie `plt.clf()`
+
+2. spustíme výsledný program, a nájdeme miesta, kde sa graf má zobraziť,
+resp. z grafu má odstrániť predchádzajúci obsah porovnaním s pôvodnou Matlab verziou,
+potom zobrazenie sa robí ako `plt.show()` a premazanie `plt.clf()`
+
+2. Môžeme nechať Pycharm preformátovať súbor, aby zodpovedal štylistickým štandardom pre Python
