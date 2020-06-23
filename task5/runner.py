@@ -4,9 +4,9 @@ from time import time
 import sys
 sys.path.append('.')
 
-from task5.mark0 import mark0
-from task5.mark1 import mark1
-from task5.mark2 import mark2
+from mark0 import mark0
+from mark1 import mark1
+from mark2 import mark2
 
 np.seterr(all='ignore')
 
