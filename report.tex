@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[a4paper, margin=50pt]{geometry}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[slovak]{babel}
+\usepackage{mathrsfs}
+\usepackage[T1]{fontenc}
+\pagestyle{empty}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\title{Preklad optimalizačných metód z jazyka Matlab do jazyka Python}
+\author{Patrik Grman}
+\date{25.6.2020}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problém}
+
+Na katedre aplikovanej matematiky a štatistiky sa pri výučbe predmetu Metódy voľnej optimalizácie na praktické ukážky používa jazyk Matlab.
+Ukazuje sa ale, že je vhodné použiť radšej niečo voľne dostupné, čo napríklad umožní študentom ľahšie experimentovať na vlastných počítačoch.
+Za týmto účelom vznikla požiadavka preložiť existujúci kód do jazyka Python verzie 3, keďže verzia 2 je EOL od začiatku roka 2020.
+
+\section*{Zimný semester}
+
+Najprv bolo treba zistiť, či nejdeme riešiť už vyriešený problém.
+Ukázalo sa ale, že veľa nástrojov robí s Pythonom 2, a často Matlab skôr emulujú ako prekladajú.
+Bolo teda treba zistiť čo a ako sa má preložiť, aby to fungovalo pod Python verziou 3.
+
+\subsection*{Časť 1: Zistenie množiny používanej funkcionality}
+
+V prvej fáze som sa zameral na existujúci kód.
+Potreboval som zistiť, aká funkcionalita sa reálne používa, aby som vedel čo treba preložiť.
+Bolo nájdených okolo 30 rôznych relevantných vecí v niekoľkých kategóriách, napríklad syntax a vstavané funkcie.
+Všetky zistenia boli zapísané do súboru pre neskoršie použitie.
+
+\subsection*{Časť 2: Nájdenie ekvivalentov pre jazyk Python}
+
+Následne bolo nutné nájsť pythonovské ekvivalenty k veciam najdeným v prvej časti.
+Niektoré funkcie buď priamo existujú alebo sú ľahko emulovateľné v základnom Pythone.
+
+Na veľa pokročilých matematickych operacií som zvolil knižnicu numpy, ktorá je de-facto štandardom pre náročnejšiu matematiku v Pythone.
+Na vykresľovanie grafov bola zvolená knižnica matplotlib, ktorej modul pyplot má rozhranie veľmi podobné matlabovým grafovým funkciám, čo umožnilo relatívne jednoduchú adaptáciu.
+
+Samozrejme ani jedna knižnica neposkytuje funkcinalitu úplne identickú matlabovskému ekvivalentu, ale skombinovaním malého počtu funkcií sa vždy dala emulovať.
+
+\section*{Letný semester}
+
+V letnom semestri bolo treba sformalizovať ako sa má robiť preklad samotný, a podľa možnosti aj preložiť čo treba.
+
+\subsection*{Časť 3: Spísanie manuálu pre ručný preklad}
+
+Na základe znalostí oboch jazykov a použitim vedomostí z druhej časti som napísal manuál pre ručný preklad.
+Manuál je napísaný v jednoduchom jazyku Markdown, a automaticky je z neho generovaná pdf verzia.
+
+Následne som ho priebežne upravoval a vylepšoval, keď sa počas práce na nasledúcich častiach ukázali niektoré dovtedy nespozorované skutočnosti.
+
+\subsection*{Časť 4: Automatizácia prekladu}
+
+Už od začiatku bolo pomerne jasné, že preklad použitím čiste regulárnych jazykových prostriedkov, prípadne vlastného zložitejšieho mechanizmu by bol problematický a výrazne náchylný na chyby.
+Preto som sa rozhodol použiť niektorú voľne dostupnú technológiu na parsovanie bezkontextových jazykov.
+
+Konkrétne som použil nástroj ANTLR, ktorý na základe formálne definovanej gramatiky vygeneruje kód ktorý realizuje samotné parsovanie.
+Ďalšia výhoda použitia existujúceho nástroja bola možnosť použiť predpripravenú gramatiku pre Matlab, určenú pre tento nástroj, aj ked sa nakoniec ukázala potreba gramatiku opakovane upravovať a rozširovať, vzhľadom na chábajúcu funkcionalitu.
+
+Na generovanie výstupu som zvolil knižnicu StringTemplate, ktorá umožňuje veľmi pohodlné generovanie Pythonového kódu vrátane interného riešenia odsadenia.
+
+Na preklad samotný som s výhodou použil návrhový vzor visitor, keďže parser generuje zakorenený strom reprezentujúici program rozdelený podľa pravidiel gramatiky.
+
+Prekladač implementuje len nutné minimum funkcionality, keďže som nechcel riešiť neexistujúci problém.
+Je schopný prekladať buď jednotlivé súbory alebo (nerekurzívne) priečinky.
+Nástroj má momentálne len rozhranie použiteľné z príkazového riadku, na vytvorenie uživatelskeho rozhrania som využil knižnicu Apache Commons CLI.
+
+\subsection*{Časť 5: Testovanie rýchlosti behu}
+
+Následne som pre zaujímavosť realizoval meranie na porovnanie rýchlosti vykonávania týchto dvoch jazykov.
+Oba jazyky su interpretované, preto ide v skutočnosti o porovnanie rýchlosti implementacií interpretera, prípadne knižničného kódu, ktorý napríklad numpy realizuje ako natívny kód.
+
+Konkrétne som zvolil implementácie, ktoré su zadarmo verejne dostupné a štandardne sa používaj, teda pre Python je to CPython a pre Matlab je to GNU Octave.
+
+Rýchlosť sa testovala vo viacerých disciplínach:
+\begin{itemize}
+    \item Jednoduchý cyklus, ktorý sčítaval čísla od 0 po n - na ňom sa ukáže ako rýchlo beží interpreter pre jednoduché operácie
+    \item Rekurzívny výpočet n-tého čísla Fibonacciho postupnosti - ukazuje výkon pri volaní funkcií
+    \item Násobenie štvorcových matíc v cykle neefektívne počítajúc n-tú mocninu matice - rýchlosť matematického kódu
+\end{itemize}
+
+\subsubsection*{Kódy pre Matlab}
+\lstset{language=Matlab}
+
+\begin{lstlisting}[label={lst:lstlisting1}]
+% disciplina 1
+function total= mark0(n)
+    total=0;
+    for i=0:n
+        total=total+i;
+    end
+end
+\end{lstlisting}
+
+\begin{lstlisting}[label={lst:lstlisting2}]
+% disciplina 2
+function x = mark1(n)
+	if(n <= 1)
+		x=1;
+	else
+		x=mark1(n-1)+mark1(n-2);
+	end
+end
+\end{lstlisting}
+
+\begin{lstlisting}[label={lst:lstlisting3}]
+% disciplina 3
+function result=mark2(mat,n)
+    result=mat;
+    for i=0:n
+        result=result*mat;
+    end
+end
+\end{lstlisting}
+
+\subsubsection*{Kódy pre Python}
+Kód bol preložený automatickým prekladačom a následne odstránené v tomto prípade nepotrebné zátvorky a voľné riadky
+
+\lstset{language=Python}
+
+\begin{lstlisting}[label={lst:lstlisting4}]
+# disciplina 1
+def mark0(n):
+    total = 0
+    for i in range(0, n + 1):
+        total = total + i
+    return total
+\end{lstlisting}
+
+
+\begin{lstlisting}[label={lst:lstlisting5}]
+# disciplina 2
+def mark1(n):
+    if n <= 1:
+        x = 1
+    else:
+        x = mark1(n - 1) + mark1(n - 2)
+    return x
+\end{lstlisting}
+
+
+\begin{lstlisting}[label={lst:lstlisting6}]
+# disciplina 3
+def mark2(mat, n):
+    result = mat
+    for i in range(0 , n + 1):
+        result = result * mat
+    return result
+\end{lstlisting}
+
+\subsubsection*{Postup testovania}
+
+Postup pre oba jazyky bol rovnaký: použitím interných hodiniek sa odmeralo trvanie 10 spustení jedneho testu pre daný argument a vypočítala sa priemerná doba jedného spustenia.
+Ak táto doba prekročila 1 minútu, test pre danú disciplínu končí, inak sa zvyšuje argument.
+
+Konkrétne pre disciplíny 1 a 3 sa argument vynásobi 10, pričom obe sú lineárne náročné úlohy, takže sa očakáva asi 10x dlhšie trvanie,
+pre disciplínu 2 sa argument zvýši o 2, keďže ide o exponenciálne náročný výpočet je očakávaný asi 2,5x dlhší čas.
+
+Oba testy boli spustené ako jediný používateľský program na virtuálnom stroji obmedzenom na jedno jadro (plne využité počas všetkých testov), pričom na fyzickom stroji počas testu nič iné spustené nebolo.
+
+\subsubsection*{Výsledky}
+
+Všetky časy sú v milisekundách.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+
+\begin{longtable}[c]{@{}lll@{}}
+\caption{Disciplína 1}
+\label{tab:dis1}\\
+\toprule
+Parameter  & Matlab & Python \\* \midrule
+1          & 1      & 0      \\
+10         & 0      & 0      \\
+100        & 0      & 0      \\
+1000       & 3      & 0      \\
+10000      & 31     & 2      \\
+100000     & 318    & 24     \\
+1000000    & 3233   & 244    \\
+10000000   & 31301  & 2379   \\
+100000000  & 310641 & 23738  \\
+1000000000 & -      & 238677 \\* \bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}lll@{}}
+\caption{Disciplína 2}
+\label{tab:dis2}\\
+\toprule
+Parameter  & Matlab & Python \\* \midrule
+10   & 9      & 0      \\
+12   & 14     & 0      \\
+14   & 36     & 1      \\
+16   & 94     & 1      \\
+18   & 247    & 4      \\
+20   & 651    & 9      \\
+22   & 1723   & 25     \\
+24   & 4505   & 65     \\
+26   & 11838  & 170    \\
+28   & 31060  & 440    \\
+30   & 81188  & 1165   \\
+32   & -      & 3059   \\
+34   & -      & 7933   \\
+36   & -      & 21011  \\
+38   & -      & 54460  \\
+40   & -      & 142842 \\* \bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}lll@{}}
+\caption{Disciplína 3}
+\label{tab:dis3}\\
+\toprule
+Parameter  & Matlab & Python \\* \midrule
+1        & 9      & 0      \\
+10       & 0      & 1      \\
+100      & 1      & 8      \\
+1000     & 9      & 84     \\
+10000    & 86     & 850    \\
+100000   & 848    & 8548   \\
+1000000  & 8584   & 85360  \\
+10000000 & 84613  & -      \\* \bottomrule
+\end{longtable}
+
+Z dát je pomerne jasne vidieť, že každá implementácia je dobrá v niečom inom.
+Kým rozdiely pri prvej úlohe su relatívne malé, pri druhej sa Python dostal výrazne ďalej, a pre zmenu v tretej zasa dominoval Matlab.
+
+\end{document}
