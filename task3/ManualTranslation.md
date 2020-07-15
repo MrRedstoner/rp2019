@@ -130,9 +130,10 @@ prislušne upravujúc koniec bloku, teda:
     operátor `'` sa nahradí `.conj().T` a namiesto operátorov začínajúcich `.`, ako napríklad `.*`,
     sa použijú obyčajné `*`, tiež môže byť vhodné výraz uzátvorkovať
     
-    - príkazy tak, ako je uvedené v príslušných súboroch task2, pričom pre func2str/printf/surfc/fplot/size skopírujeme
+    - príkazy tak, ako je uvedené v príslušných súboroch task2, pričom pre
+    `func2str`, `printf`, `surfc`, `plot`, `fplot` a `size` skopírujeme
     definíciu z matlabeqiv.py za importy v našom súbore, a buď necháme Pycharm, nech ponúkne potrebné importy,
-    alebo ich tiež skopírujeme
+    alebo ich tiež skopírujeme. Pre `fplot` treba nakopírovať aj definíciu `plot`
     
     - navyše použitie surfc vyžaduje `from mpl_toolkits.mplot3d import Axes3D`
     
@@ -161,13 +162,13 @@ prislušne upravujúc koniec bloku, teda:
    
     X,Y = np.meshgrid(a,b)
     
-    sleep(cas)
+    plt.pause(cas)
     
     np.ma.zeros(pocet)
     
     random.random()
     ```
-    kde sleep vyžaduje `from time import sleep`, použitie sqrt vyžaduje `from math import sqrt`
+    kde pause vyžaduje `import matplotlib.pyplot as plt`, použitie sqrt vyžaduje `from math import sqrt`
     a random potrebuje `import random`
     
     Narozdiel od Matlabu na konci riadkov netreba `;` a odporúča sa ich odstrániť.
@@ -188,8 +189,6 @@ prislušne upravujúc koniec bloku, teda:
     ```matlab
     title(nazov)
     
-    plot(x,y)
-    
     legend(nazov1,nazov2)
     
     contour(X,Y,Z)
@@ -199,8 +198,6 @@ prislušne upravujúc koniec bloku, teda:
     na
     ```python
     plt.title(nazov)
-    
-    plt.plot(x,y)
     
     plt.legend([nazov1,nazov2])
     
