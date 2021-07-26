@@ -1,0 +1,17 @@
+GNU Octave, version 6.1.1~hg.2021.01.26
+Copyright (C) 2020 The Octave Project Developers.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+
+Octave was configured for "x86_64-pc-linux-gnu".
+
+Additional information about Octave is available at https://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit https://www.octave.org/get-involved.html
+
+Read https://www.octave.org/bugs.html to learn how to submit bug reports.
+Python 3.9.5
+Python 3.6.12 (7.3.3+dfsg-3, Feb 26 2021, 04:58:43)
+[PyPy 7.3.3 with GCC 10.2.1 20210220]
